@@ -26,8 +26,8 @@
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
-    "format": "prettier --write 'src/**/*.{js,ts,jsx,tsx,json,html}' && eslint 'src/**/*.{js,ts,jsx,tsx,json,html}' --fix",
-    "test:format": "prettier --check 'src/**/*.{js,ts,jsx,tsx,json,html}' && eslint 'src/**/*.{js,ts,jsx,tsx,json,html}'"
+    "format": "prettier --write 'src/**/*.{js,ts,jsx,tsx,json,html}' && eslint src --ext ts,tsx,json,html --report-unused-disable-directives --max-warnings=0 --fix",
+    "test:format": "prettier --check 'src/**/*.{js,ts,jsx,tsx,json,html}' && eslint src --ext ts,tsx,json,html --report-unused-disable-directives --max-warnings=0"
   },
   "eslintConfig": {
     "extends": [
