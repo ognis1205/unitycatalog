@@ -11,10 +11,9 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from || '/';
-  const googleEnabled = process.env.REACT_APP_GOOGLE_AUTH_ENABLED === 'true';
-  const oktaEnabled = process.env.REACT_APP_OKTA_AUTH_ENABLED === 'true';
-  const keycloakEnabled =
-    process.env.REACT_APP_KEYCLOAK_AUTH_ENABLED === 'true';
+  const googleEnabled = import.meta.env.VITE_GOOGLE_AUTH_ENABLED === 'true';
+  const oktaEnabled = import.meta.env.VITE_OKTA_AUTH_ENABLED === 'true';
+  const keycloakEnabled = import.meta.env.VITE_KEYCLOAK_AUTH_ENABLED === 'true';
 
   const handleGoogleSignIn = async (idToken: string) => {
     await loginWithToken(idToken).then(() => navigate(from, { replace: true }));

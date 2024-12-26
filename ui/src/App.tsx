@@ -73,7 +73,7 @@ const router = createBrowserRouter([
 function AppProvider() {
   const { logout, currentUser } = useAuth();
   const navigate = useNavigate();
-  const authEnabled = process.env.REACT_APP_GOOGLE_AUTH_ENABLED === 'true';
+  const authEnabled = import.meta.env.VITE_GOOGLE_AUTH_ENABLED === 'true';
 
   const profileMenuItems = useMemo(
     (): MenuProps['items'] => [

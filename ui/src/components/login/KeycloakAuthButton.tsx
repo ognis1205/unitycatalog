@@ -8,9 +8,9 @@ export default function KeycloakAuthButton() {
 
   // const initKeycloak = () => {
   //   const kc = new Keycloak({
-  //     url: process.env.REACT_APP_KEYCLOAK_URL || '',
-  //     realm: process.env.REACT_APP_KEYCLOAK_REALM_ID || '',
-  //     clientId: process.env.REACT_APP_KEYCLOAK_CLIENT_ID || '',
+  //     url: import.meta.env.VITE_KEYCLOAK_URL || '',
+  //     realm: import.meta.env.VITE_KEYCLOAK_REALM_ID || '',
+  //     clientId: import.meta.env.VITE_KEYCLOAK_CLIENT_ID || '',
   //   });
   //
   //   kc.init({ onLoad: 'check-sso' })

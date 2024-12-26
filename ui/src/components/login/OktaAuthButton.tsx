@@ -18,11 +18,11 @@ export default function OktaAuthButton({
     if (!widgetModalOpen) return;
 
     const widget = new OktaSignIn({
-      baseUrl: process.env.REACT_APP_OKTA_DOMAIN,
-      clientId: process.env.REACT_APP_OKTA_CLIENT_ID,
+      baseUrl: import.meta.env.VITE_OKTA_DOMAIN,
+      clientId: import.meta.env.VITE_OKTA_CLIENT_ID,
       redirectUri: window.location.origin + '/login/callback',
       authParams: {
-        issuer: process.env.REACT_APP_OKTA_DOMAIN + '/oauth2/default',
+        issuer: import.meta.env.VITE_OKTA_DOMAIN + '/oauth2/default',
         scopes: ['openid', 'profile', 'email'],
       },
     });

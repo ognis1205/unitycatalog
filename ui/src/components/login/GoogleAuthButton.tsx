@@ -6,7 +6,7 @@ export default function GoogleAuthButton({
 }: {
   onGoogleSignIn: (credential: string) => void;
 }) {
-  const clientId = useMemo(() => process.env.REACT_APP_GOOGLE_CLIENT_ID, []);
+  const clientId = useMemo(() => import.meta.env.VITE_GOOGLE_CLIENT_ID, []);
 
   const handleGoogleSignIn = useCallback(
     (res: any) => {
@@ -31,7 +31,7 @@ export default function GoogleAuthButton({
       if (!(window as any).google || isGsiScriptLoaded) return;
 
       (window as any).google.accounts.id.initialize({
-        client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+        client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
         callback: handleGoogleSignIn,
       });
 

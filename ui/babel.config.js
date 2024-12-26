@@ -1,3 +1,7 @@
 module.exports = {
-  presets: ["react-app", "@babel/preset-env", "@babel/preset-typescript"],
+  presets: [
+    "@babel/preset-env",
+    "@babel/preset-typescript",
+    "babel-preset-vite",
+  ],
 };
