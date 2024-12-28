@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "proxy": "http://localhost:8080",
   "dependencies": {
     "@ant-design/icons": "^5.3.7",
     "@okta/okta-auth-js": "^7.7.0",
@@ -13,6 +12,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "@types/node": "^22.10.2",
     "antd": "^5.19.1",
     "axios": "^1.7.4",
     "react": "^18.0.0",
