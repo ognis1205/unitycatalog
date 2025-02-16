@@ -1,23 +1,17 @@
-# syntax=docker.io/docker/dockerfile:1.7-labs
-FROM node:18
+ARG APP_HOME=/home/node/app
 
-ARG PROXY_HOST=server
-WORKDIR /ui
+# build environment
+FROM node:18 AS builder
+ARG APP_HOME
+WORKDIR ${APP_HOME}
+COPY . ${APP_HOME}
+RUN yarn install
+RUN yarn build
 
-COPY package.json yarn.lock ./
-
-# TODO: configure this directly from the ui app
-# Work around to set the proxy host; required for running locally with docker-compose
-RUN <<EOF
-set -ex
-apt-get update
-apt-get install -y jq
-jq --arg proxy "http://$PROXY_HOST:8080" '.proxy = $proxy' package.json > temp.json
-mv temp.json package.json
-yarn install
-apt-get clean
-EOF
-
-COPY --exclude=package.json --exclude=yarn.lock . ./
-
-CMD ["yarn", "start"]
+# production environment
+FROM nginx:1.27.4
+ARG APP_HOME
+COPY --from=builder ${APP_HOME}/build /var/www
+COPY ./etc/prod/nginx.conf /etc/nginx/nginx.conf
+WORKDIR /usr/share/nginx/html
+CMD ["nginx", "-g", "daemon off;"]
